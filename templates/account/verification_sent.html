@@ -1,0 +1,12 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verifica tu dirección de correo" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Vreifica tu dirección de correo" %}</h1>
+
+    <p>{% blocktrans %}Hemos enviado un e-mail para verificar. Sigue la liga para finalizar el proceso. Contáctanos en caso de cualquier inconveniente.{% endblocktrans %}</p>
+
+{% endblock %}
