@@ -7,6 +7,15 @@
     <title>Digital Signatures</title>
 </head>
 <body>
-    Main page
+    <ul>
+        <li><a href="">My documents</a></li>
+        <li><a href="">Shared with me</a></li>
+    </ul>
+    Sign a document
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
