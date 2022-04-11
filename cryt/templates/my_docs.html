@@ -8,14 +8,9 @@
 </head>
 <body>
     <ul>
-        <li><a href="{% url 'mydocs' %}">My documents</a></li>
-        <li><a href="">Shared with me</a></li>
+        {% for doc in docs %}
+        <li><a href="{{ doc.document.url }}">{{ doc.document }}</a></li>
+        {% endfor %}
     </ul>
-    Sign a document
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
 </body>
 </html>

@@ -6,6 +6,8 @@ from django.views.static import serve
 
 from .forms import SignDocForm
 
+from .models import Document
+
 # Index page. Creates and receives sign document form.
 def index(request):
     if request.method == 'POST':
@@ -22,6 +24,9 @@ def index(request):
         form = SignDocForm()
         return render(request, 'index.html', {'form': form})
         
+def mydocs(request):
+    docs = Document.objects.filter(owner=request.user)
+    return render(request, 'my_docs.html', {'docs': docs})
 
 #Serves documents depending on user credentials.
 #It is pending to select specific user authorization. In the meantime, user has to be logged in.
