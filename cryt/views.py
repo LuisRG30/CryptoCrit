@@ -1,4 +1,5 @@
 from http.client import HTTPResponse
+from urllib.robotparser import RequestRate
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -13,13 +14,14 @@ def index(request):
     if request.method == 'POST':
         form = SignDocForm(request.POST, request.FILES)
         if form.is_valid():
-            return HttpResponse(form)
+            #Confirm password is valid
+            
+            #Sign document here
+
+            #Upload to datalake here 
+            return HttpResponse('Signature successful')
         else:
             return HttpResponse('Invlid form')
-        #Sign document here
-
-        #Upload to datalake here 
-        pass
     else:
         form = SignDocForm()
         return render(request, 'index.html', {'form': form})
@@ -27,6 +29,10 @@ def index(request):
 def mydocs(request):
     docs = Document.objects.filter(owner=request.user)
     return render(request, 'my_docs.html', {'docs': docs})
+
+def shared(request):
+    docs = Document.objects.filter(shared_with=request.user)
+    return render(request, 'shared.html', {'docs': docs})
 
 #Serves documents depending on user credentials.
 #It is pending to select specific user authorization. In the meantime, user has to be logged in.

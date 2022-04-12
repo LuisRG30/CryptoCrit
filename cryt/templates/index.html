@@ -9,7 +9,7 @@
 <body>
     <ul>
         <li><a href="{% url 'mydocs' %}">My documents</a></li>
-        <li><a href="">Shared with me</a></li>
+        <li><a href="{% url 'shared' %}">Shared with me</a></li>
     </ul>
     Sign a document
     <form method="post" enctype="multipart/form-data">

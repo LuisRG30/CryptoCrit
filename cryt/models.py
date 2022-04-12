@@ -13,7 +13,7 @@ class UserProfile(models.Model):
 
 class Document(models.Model):
     document = models.FileField()
-    owner = models.OneToOneField(
+    owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     shared_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='shared', blank=True)
 
