@@ -7,6 +7,7 @@ from django.views.static import serve
 
 from .forms import SignDocForm
 
+from django.contrib.auth.models import User
 from .models import Document
 
 # Index page. Creates and receives sign document form.
@@ -15,11 +16,15 @@ def index(request):
         form = SignDocForm(request.POST, request.FILES)
         if form.is_valid():
             #Confirm password is valid
-            
-            #Sign document here
+            user = User.objects.get(username=request.user.username)
+            if user.check_password(form.cleaned_data['password']):
+                #Sign document here
 
-            #Upload to datalake here 
-            return HttpResponse('Signature successful')
+                #Upload to datalake here. Also register share relationships.
+                 
+                return HttpResponse('Signature successful')
+            else:
+                return HttpResponse('Incorrect password')
         else:
             return HttpResponse('Invlid form')
     else:
