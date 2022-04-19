@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from .models import Document
 
 # Index page. Creates and receives sign document form.
+@login_required
 def index(request):
     if request.method == 'POST':
         form = SignDocForm(request.POST, request.FILES)
@@ -31,10 +32,12 @@ def index(request):
         form = SignDocForm()
         return render(request, 'index.html', {'form': form})
         
+@login_required
 def mydocs(request):
     docs = Document.objects.filter(owner=request.user)
     return render(request, 'my_docs.html', {'docs': docs})
 
+@login_required
 def shared(request):
     docs = Document.objects.filter(shared_with=request.user)
     return render(request, 'shared.html', {'docs': docs})
