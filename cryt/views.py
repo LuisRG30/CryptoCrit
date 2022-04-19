@@ -43,5 +43,7 @@ def shared(request):
 #It is pending to select specific user authorization. In the meantime, user has to be logged in.
 @login_required
 def protected_serve(request, path, document_root=None, show_indexes=False):
+    #Validate requested doc
+    
     return serve(request, path, document_root, show_indexes)
 
