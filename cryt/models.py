@@ -2,10 +2,11 @@ from tokenize import blank_re
 from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
+from django.core.files.base import ContentFile, File
 
 from django.contrib.auth.models import User
 
-from KeyGenerator import KeyGenerator
+from .KeyGenerator import KeyGenerator
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -34,8 +35,14 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance, private_key='defaults/privatekey.key', public_key='defaults/publickey.key')
         k = KeyGenerator()
-        k.generate_certs(instance.profile.private_key, instance.profile.public_key)
-    
+        with open('privatekey.key', 'wb+') as f:
+            f.write(k.privkey.save_pkcs1('PEM'))
+            instance.profile.private_key.save('privatekey.key', File(f))
+
+        with open('publickey.key', 'wb+') as f:
+            f.write(k.pubkey.save_pkcs1('PEM'))
+            instance.profile.public_key.save('publickey.key', File(f))
+
     instance.profile.save()
 
 post_save.connect(create_user_profile, sender=User)
