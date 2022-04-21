@@ -18,7 +18,6 @@ class Gio:
 
         #Sign the document and save signature with document
         signature = rsa.sign(message, privkey, 'SHA-512')
-        file.close()
 
         return signature
 
