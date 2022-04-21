@@ -14,10 +14,11 @@ class Gio:
 
         #Open file and hash
         document = file.open('rb')
-        hash_value = rsa.compute_hash(document, 'SHA-512')
+        message = document.read()
 
         #Sign the document and save signature with document
-        signature = rsa.sign(document, privkey, 'SHA-512')
+        signature = rsa.sign(message, privkey, 'SHA-512')
+        file.close()
 
         return signature
 
