@@ -43,7 +43,7 @@ def index(request):
                 gio = Gio()
                 signature = gio.firmala(file, profile.private_key)
 
-                with open('signature', 'wb+') as s:
+                with open('s', 'wb+') as s:
                     s.write(signature)
                 
                     #Upload to datalake here. Also register share relationships.

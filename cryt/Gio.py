@@ -1,5 +1,4 @@
 import rsa
-from django.core.files.base import ContentFile, File
 
 #Gio because of fírmala Gio
 class Gio:
@@ -14,15 +13,19 @@ class Gio:
         privkey = rsa.PrivateKey.load_pkcs1(data)
 
         #Open file and hash
-        document = file.read()
+        document = file.open('rb')
         hash_value = rsa.compute_hash(document, 'SHA-512')
 
         #Sign the document and save signature with document
-        signature = rsa.sign(hash_value, privkey, 'SHA-512')
+        signature = rsa.sign(document, privkey, 'SHA-512')
 
         return signature
 
 
     #To implement metadata to detect pulic key to validate against (File coming from user)
     def verificala(self, file):
+        pass
+
+
+    def sign(self, file):
         pass

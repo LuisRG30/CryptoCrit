@@ -36,11 +36,11 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
         k = KeyGenerator()
-        with open('privatekey.key', 'wb+') as f:
+        with open('privatekey', 'wb+') as f:
             f.write(k.privkey.save_pkcs1('PEM'))
             instance.profile.private_key.save('privatekey.key', File(f))
 
-        with open('publickey.key', 'wb+') as f:
+        with open('publickey', 'wb+') as f:
             f.write(k.pubkey.save_pkcs1('PEM'))
             instance.profile.public_key.save('publickey.key', File(f))
 
