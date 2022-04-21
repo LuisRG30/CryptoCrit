@@ -33,7 +33,7 @@ class Document(models.Model):
     
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance, private_key='defaults/privatekey.key', public_key='defaults/publickey.key')
+        UserProfile.objects.create(user=instance)
         k = KeyGenerator()
         with open('privatekey.key', 'wb+') as f:
             f.write(k.privkey.save_pkcs1('PEM'))
