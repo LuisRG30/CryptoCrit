@@ -1,3 +1,5 @@
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
 from http.client import HTTPResponse
 from urllib.robotparser import RequestRate
 from django.shortcuts import render
@@ -41,6 +43,31 @@ def mydocs(request):
 def shared(request):
     docs = Document.objects.filter(shared_with=request.user)
     return render(request, 'shared.html', {'docs': docs})
+
+@login_required
+def metadata(request):
+    doc = Document.objects.first()
+
+    #reader = PdfFileReader(doc.document.open())
+
+    #writer = PdfFileWriter()
+
+    #writer.appendPagesFromReader(reader)
+    #metadata = reader.getDocumentInfo()
+    #writer.addMetadata(metadata)
+    
+    #writer.addMetadata({"/Username": "champs"})
+
+    #doc.document.close()
+
+    """
+    f = doc.document.open("wb")
+    writer.write(f)
+    doc.document.close()
+    """
+    
+    return HttpResponse(doc.document.open("rb").read())
+
 
 #Serves documents depending on user credentials.
 #It is pending to select specific user authorization. In the meantime, user has to be logged in.

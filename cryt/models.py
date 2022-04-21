@@ -1,23 +1,27 @@
 from tokenize import blank_re
 from django.db import models
 from django.conf import settings
+from django.db.models.signals import post_save
+
+from django.contrib.auth.models import User
+
+from KeyGenerator import KeyGenerator
 
 # Create your models here.
 class UserProfile(models.Model):
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     stylish_signature = models.ImageField(null=True, blank=True)
-    text_signature = models.CharField(max_length=100)
-    p12 = models.FileField()
+    text_signature = models.CharField(max_length=100, null=True, blank=True)
+    private_key= models.FileField(null=True, blank=True)
+    public_key = models.FileField(null=True, blank=True)
     
 
     def __str__(self):
-        return f"{self.user.email}"
+        return f"{self.user.username}"
 
 class Document(models.Model):
     document = models.FileField()
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     shared_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='shared', blank=True)
     signed = models.DateTimeField(null=True, blank=True)
     reason = models.TextField(null=True, blank=True)
@@ -26,3 +30,12 @@ class Document(models.Model):
     def __str__(self):
         return f"{self.document}"
     
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance, private_key='defaults/privatekey.key', public_key='defaults/publickey.key')
+        k = KeyGenerator()
+        k.generate_certs(instance.profile.private_key, instance.profile.public_key)
+    
+    instance.profile.save()
+
+post_save.connect(create_user_profile, sender=User)
