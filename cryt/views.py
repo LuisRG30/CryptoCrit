@@ -35,7 +35,6 @@ def index(request):
 
                 writer.addMetadata({"/Username": user.username})
 
-                
                 writer.write(file)
                 
                 #Sign document here
@@ -68,30 +67,6 @@ def mydocs(request):
 def shared(request):
     docs = Document.objects.filter(shared_with=request.user)
     return render(request, 'shared.html', {'docs': docs})
-
-@login_required
-def metadata(request):
-    doc = Document.objects.first()
-
-    reader = PdfFileReader(doc.document.open())
-
-    #writer = PdfFileWriter()
-
-    #writer.appendPagesFromReader(reader)
-    metadata = reader.getDocumentInfo()
-    #writer.addMetadata(metadata)
-    
-    #writer.addMetadata({"/Username": "champs"})
-
-    #doc.document.close()
-
-    """
-    f = doc.document.open("wb")
-    writer.write(f)
-    doc.document.close()
-    """
-    
-    return HttpResponse(metadata)
 
 
 #Serves documents depending on user credentials.

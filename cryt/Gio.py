@@ -26,7 +26,3 @@ class Gio:
     #To implement metadata to detect pulic key to validate against (File coming from user)
     def verificala(self, file):
         pass
-
-
-    def sign(self, file):
-        pass
