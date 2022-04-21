@@ -22,6 +22,7 @@ class UserProfile(models.Model):
 
 class Document(models.Model):
     document = models.FileField()
+    signature = models.FileField(null=True)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     shared_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='shared', blank=True)
     signed = models.DateTimeField(null=True, blank=True)

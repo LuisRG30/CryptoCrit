@@ -2,6 +2,7 @@ from PyPDF2 import PdfFileReader, PdfFileWriter
 
 from http.client import HTTPResponse
 from urllib.robotparser import RequestRate
+from django.core.files.base import ContentFile, File
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -10,7 +11,9 @@ from django.views.static import serve
 from .forms import SignDocForm
 
 from django.contrib.auth.models import User
-from .models import Document
+from .models import Document, UserProfile
+
+from .Gio import Gio
 
 # Index page. Creates and receives sign document form.
 @login_required
@@ -21,11 +24,33 @@ def index(request):
             #Confirm password is valid
             user = User.objects.get(username=request.user.username)
             if user.check_password(form.cleaned_data['password']):
-                #Sign document here
+                #Include metadata in document prior to hashing
+                file = request.FILES['file']
+                reader =  PdfFileReader(file.open())
+                writer = PdfFileWriter()
 
-                #Upload to datalake here. Also register share relationships.
+                writer.appendPagesFromReader(reader)
+                metadata = reader.getDocumentInfo()
+                writer.addMetadata(metadata)
+
+                writer.addMetadata({"/Username": user.username})
+
+                
+                writer.write(file)
+                
+                #Sign document here
+                profile = UserProfile.objects.get(user=user)
+
+                gio = Gio()
+                signature = gio.firmala(file, profile.private_key)
+
+                with open('signature', 'wb+') as s:
+                    s.write(signature)
+                
+                    #Upload to datalake here. Also register share relationships.
+                    Document.objects.create(document=file, owner=user, signature=File(s))
                  
-                return HttpResponse('Signature successful')
+                return HttpResponse(signature)
             else:
                 return HttpResponse('Incorrect password')
         else:
@@ -48,12 +73,12 @@ def shared(request):
 def metadata(request):
     doc = Document.objects.first()
 
-    #reader = PdfFileReader(doc.document.open())
+    reader = PdfFileReader(doc.document.open())
 
     #writer = PdfFileWriter()
 
     #writer.appendPagesFromReader(reader)
-    #metadata = reader.getDocumentInfo()
+    metadata = reader.getDocumentInfo()
     #writer.addMetadata(metadata)
     
     #writer.addMetadata({"/Username": "champs"})
@@ -66,7 +91,7 @@ def metadata(request):
     doc.document.close()
     """
     
-    return HttpResponse(doc.document.open("rb").read())
+    return HttpResponse(metadata)
 
 
 #Serves documents depending on user credentials.
