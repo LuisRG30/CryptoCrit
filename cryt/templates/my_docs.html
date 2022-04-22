@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
     <title>Digital Signatures</title>
 </head>
 <body>
     <h2>My Documents</h2>
-        <ul>
-        {% for doc in docs %}
-        <li><a href="{{ doc.document.url }}">{{ doc.document }}</a></li>
-        {% endfor %}
-        </ul>
+        <table>
+          <tr>
+            <th colspan="2">Document</th>
+            <th colspan="2">Owner</th>
+            <th colspan="2">Signature Date</th>
+          </tr>
+          {% for doc in docs %}
+          <tr>
+            <td colspan="2"><a href="{{ doc.document.url }}">{{ doc.document }}</a></td>
+            <td colspan="2">{{ doc.owner }}</td>
+            <td colspan="2">{{ doc.signed }}</td>
+          </tr>
+          {% endfor %}
+        </table>
 </body>
 </html>

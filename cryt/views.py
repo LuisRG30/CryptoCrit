@@ -1,4 +1,7 @@
+from datetime import datetime
+
 from PyPDF2 import PdfFileReader, PdfFileWriter
+
 
 from http.client import HTTPResponse
 from urllib.robotparser import RequestRate
@@ -24,22 +27,26 @@ def index(request):
             #Confirm password is valid
             user = User.objects.get(username=request.user.username)
             if user.check_password(form.cleaned_data['password']):
+                #Sign document here
+                profile = UserProfile.objects.get(user=user)
+
                 #Include metadata in document prior to hashing
                 file = request.FILES['file']
                 reader =  PdfFileReader(file.open('wb+'))
                 writer = PdfFileWriter()
                 
-
                 writer.appendPagesFromReader(reader)
                 metadata = reader.getDocumentInfo()
+                
                 writer.addMetadata(metadata)
 
-                writer.addMetadata({"/Username": user.username})
+                #Create document object
+                document = Document.objects.create(owner=user, signed=datetime.now())
+
+                writer.addMetadata({"/Docid": str(document.id)})
 
                 writer.write(file)
-                
-                #Sign document here
-                profile = UserProfile.objects.get(user=user)
+
 
                 gio = Gio()
                 signature = gio.firmala(file, profile.private_key)
@@ -49,7 +56,9 @@ def index(request):
                     s.write(signature)
                 
                     #Upload to datalake here. Also register share relationships.
-                    Document.objects.create(document=file, owner=user, signature=File(s))
+                    document.document = file
+                    document.signature = File(s)
+                    document.save()
                 file.close()
                  
                 return HttpResponse(signature)
@@ -81,18 +90,19 @@ def verify(request):
             try:
                 reader =  PdfFileReader(file.open())
                 metadata = reader.getDocumentInfo()
-                username = metadata['/Username']
-                user = User.objects.get(username=username)
+                docid = metadata['/Docid']
+                doc = Document.objects.get(id=docid)
+                user = doc.owner
             except:
                 return HttpResponse('Could not read file metadata. File is possibly corrupt.')
             
             #Verify signature for given user
             try:
                 profile = UserProfile.objects.get(user=user)
-                doc = Document.objects.get(document=file.name)
                 gio = Gio()
                 res = gio.verificala(file, doc.signature, profile.public_key)
-                return HttpResponse(res)
+                if res:
+                    return HttpResponse(f"Signed by user {user}")
             except:
                 return HttpResponse('Signature could not be verified.')
 
