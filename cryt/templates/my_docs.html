@@ -8,14 +8,10 @@
 </head>
 <body>
     <h2>My Documents</h2>
-    <table>
+        <ul>
         {% for doc in docs %}
-        <tr>
-          <td>{{ doc.document }}</td>
-          <td>{{ doc.document.url }}</td>
-          <td><a href="{{ doc.document.url }}">Link</a></td>
-        </tr>
+        <li><a href="{{ doc.document.url }}">{{ doc.document }}</a></li>
         {% endfor %}
-      </table>
+        </ul>
 </body>
 </html>

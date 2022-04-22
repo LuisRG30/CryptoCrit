@@ -23,9 +23,23 @@ class Gio:
 
 
     #To implement metadata to detect pulic key to validate against (File coming from user)
-    def verificala(self, file):
-        pass
+    def verificala(self, file, signature_file, keyfile):
+        #Open public key file 
+        data = keyfile.open('rb').read()
+        keyfile.close()
 
+        #Load private key file
+        pubkey = rsa.PublicKey.load_pkcs1(data)
 
-    def sign(self, file):
-        pass
+        #Open file
+        document = file.open('rb')
+        message = document.read()
+
+        #Open signature
+        signature = signature_file.open('rb').read()
+
+        try:
+            rsa.verify(message, signature, pubkey)
+            return True
+        except:
+            return False

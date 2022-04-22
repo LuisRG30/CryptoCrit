@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.static import serve
 
-from .forms import SignDocForm
+from .forms import SignDocForm, VerifyDocForm
 
 from django.contrib.auth.models import User
 from .models import Document, UserProfile
@@ -26,8 +26,9 @@ def index(request):
             if user.check_password(form.cleaned_data['password']):
                 #Include metadata in document prior to hashing
                 file = request.FILES['file']
-                reader =  PdfFileReader(file.open())
+                reader =  PdfFileReader(file.open('wb+'))
                 writer = PdfFileWriter()
+                
 
                 writer.appendPagesFromReader(reader)
                 metadata = reader.getDocumentInfo()
@@ -49,6 +50,7 @@ def index(request):
                 
                     #Upload to datalake here. Also register share relationships.
                     Document.objects.create(document=file, owner=user, signature=File(s))
+                file.close()
                  
                 return HttpResponse(signature)
             else:
@@ -57,7 +59,7 @@ def index(request):
             return HttpResponse('Invlid form')
     else:
         form = SignDocForm()
-        return render(request, 'index.html', {'form': form})
+        return render(request, 'index.html', {'form': form, 'user': request.user})
         
 @login_required
 def mydocs(request):
@@ -68,6 +70,37 @@ def mydocs(request):
 def shared(request):
     docs = Document.objects.filter(shared_with=request.user)
     return render(request, 'shared.html', {'docs': docs})
+
+@login_required
+def verify(request):
+    if request.method == 'POST':
+        form = VerifyDocForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['file']
+            #Read file metadata to fetch user to compare against
+            try:
+                reader =  PdfFileReader(file.open())
+                metadata = reader.getDocumentInfo()
+                username = metadata['/Username']
+                user = User.objects.get(username=username)
+            except:
+                return HttpResponse('Could not read file metadata. File is possibly corrupt.')
+            
+            #Verify signature for given user
+            try:
+                profile = UserProfile.objects.get(user=user)
+                doc = Document.objects.get(document=file.name)
+                gio = Gio()
+                res = gio.verificala(file, doc.signature, profile.public_key)
+                return HttpResponse(res)
+            except:
+                return HttpResponse('Signature could not be verified.')
+
+        else:
+            return HttpResponse('Invalid form')
+    else:
+        form = VerifyDocForm()
+        return render(request, 'verify.html', {'form': form})
 
 
 #Serves documents depending on user credentials.
