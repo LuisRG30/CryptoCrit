@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 {% load static %}
-
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
@@ -11,7 +10,7 @@
     <meta name="author" content="TEC_IDM2022">
 
     <!-- CSS style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
 
     <!-- Icons-->
     <link rel="icon" href="resources/icon/web-imagotipo_16x16.png" sizes="16x16" type="image/png">
@@ -27,7 +26,7 @@
         <div class="navbar-welcome">
             <div class="logo">
                 <div class="webname">
-                    <h2 class="webname-h2" >CryptoCrit</h2>
+                    <h2 class="webname-h2" >GIO</h2>
                 </div>
                 <div class="logo-text">
                     <h4 style="color: var(--highlight);">The fastest digital signer</h4>
@@ -43,7 +42,10 @@
             </div>
             <div class="botn-verify  botn-menu botn-style">
                 <a class="menu-botton" href="{% url 'verify' %}">Verify a document</a>
-            </div>       
+            </div>
+            <div class="botn-verify  botn-menu botn-style">
+                <a class="menu-botton" href="{% url 'history' %}">Historial</a>
+            </div>         
         </div>
     </nav>
 

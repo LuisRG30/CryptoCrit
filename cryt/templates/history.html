@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
+    <title>Digital Signatures</title>
+</head>
+<body>
+    <h2>Activity Log</h2>
+        <table>
+          <tr>
+            <th colspan="2">Operation</th>
+            <th colspan="2">Timestamp</th>
+          </tr>
+          {% for event in events %}
+          <tr>
+            <td colspan="2">{{ event.operation }}</td>
+            <td colspan="2">{{ event.timestamp }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+</body>
+</html>

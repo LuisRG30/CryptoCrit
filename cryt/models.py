@@ -31,6 +31,15 @@ class Document(models.Model):
 
     def __str__(self):
         return f"{self.document}"
+
+class Event(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    operation = models.CharField(max_length=400)
+    timestamp = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.owner} -- {self.operation}"
+
     
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

@@ -14,7 +14,7 @@ from django.views.static import serve
 from .forms import SignDocForm, VerifyDocForm
 
 from django.contrib.auth.models import User
-from .models import Document, UserProfile
+from .models import Document, UserProfile, Event
 
 from .Gio import Gio
 
@@ -60,8 +60,10 @@ def index(request):
                     document.signature = File(s)
                     document.save()
                 file.close()
+
+                Event.objects.create(owner=request.user, operation=f"Sign document {file.name}", timestamp=datetime.now())
                  
-                return HttpResponse(signature)
+                return HttpResponse("Signature succesful")
             else:
                 return HttpResponse('Incorrect password')
         else:
@@ -86,6 +88,7 @@ def verify(request):
         form = VerifyDocForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
+            Event.objects.create(owner=request.user, operation=f"Verify file {file.name}", timestamp=datetime.now())
             #Read file metadata to fetch user to compare against
             try:
                 reader =  PdfFileReader(file.open())
@@ -112,11 +115,19 @@ def verify(request):
         form = VerifyDocForm()
         return render(request, 'verify.html', {'form': form})
 
+@login_required
+def history(request):
+    events = Event.objects.filter(owner=request.user)
+    return render(request, 'history.html', {'events': events})
+
 
 #Serves documents depending on user credentials.
 #It is pending to select specific user authorization. In the meantime, user has to be logged in.
 @login_required
 def protected_serve(request, path, document_root=None, show_indexes=False):
+    #Log request in the event log
+    Event.objects.create(owner=request.user, operation=f"Download document {path}", timestamp=datetime.now())
+
     #Validate requested doc
     
     return serve(request, path, document_root, show_indexes)
