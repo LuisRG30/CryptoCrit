@@ -1,1 +1,1 @@
-web: gunicorn CryptoCryt.wsgi --log-file -
+web: gunicorn CryptoCrit.wsgi --log-file -
