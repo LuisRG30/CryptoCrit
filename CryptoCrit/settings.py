@@ -79,14 +79,25 @@ WSGI_APPLICATION = 'CryptoCrit.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': 5432,
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -139,8 +150,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/media/'
 
 #S3 buckets
-AWS_ACCESS_KEY_ID = 'dummy'
-AWS_SECRET_ACCESS_KEY = 'dummy'
+AWS_ACCESS_KEY_ID = os.environ['ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'giosigner'
 
 AWS_S3_FILE_OVERWRITE = True
