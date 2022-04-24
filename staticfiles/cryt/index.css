@@ -1,0 +1,144 @@
+/* CSS Style for all html's*/
+
+
+/*General configurations*/
+body{
+    min-width:    1000px;
+    margin-top:   50px;
+    margin-left:  70px;
+    margin-right: 70px;
+    font-family: 'sans-serif', sans-serif;
+    background: var(--terciary-color) none repeat scroll 0% 0%;
+  
+    /*Color theme*/
+    --primary-DEFAULT:      #dce0e9;
+    --primary-dark-DEFAULT: #bcc3d1;
+    --secondary-color:      #9097aa;
+    --highlight:            #5294e2;
+    --primary-text:         #010302; 
+    --terciary-color:       #dce0e9;
+  
+  }
+  
+  /* Font parameters*/
+  h1,h2,h3,h4,h5{
+    font-weight: 700;
+    color: var(--primary-text)
+  }
+  
+  /* Configurations for index*/
+  
+  /* Conf navigation bar and title*/
+  
+  .navbar{
+    position: relative;
+    margin-top: 1%;
+    margin-bottom: 0%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-DEFAULT);
+  }
+  
+  .navbar-welcome{
+    position: relative;
+    border-right: solid;
+    border-right-width: 0.5%;
+    width: 33.32%;
+    height: 50%;
+    text-align: center;
+    left: -5%;
+  }
+  
+  .webname{
+    color: var(--highlight);
+    font-size: 200%;
+    position: relative;
+    top: 10px;
+    left: 5px;
+  }
+  
+  .webname-h2{
+   margin-top: 0;
+   margin-bottom: 0;
+  }
+  
+  .title{
+    position: relative;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+  }
+  
+  .navbar-menu{
+    position: relative;
+    left: 35%;
+    width: 66.64%;
+    height: 50%;
+    top: -148.11px
+  }
+  
+  .menu-botton{
+    display: block;
+    text-decoration: none;
+    font-size: 120%;
+    color: #0b0b0b ;
+  }
+  
+  .botn-menu{
+    position: relative;
+    width: 20%;
+    text-align: center;
+    height: auto;
+    top: 50px
+  }
+  
+  .botn-mydocs{
+    bottom: 0px;
+    top: 30px;
+    left: 22%;
+  }
+  
+  .botn-style{
+    background-color: var(--highlight);
+    border: solid black;
+    border-top-width: 1px;
+    border-bottom-width: 4px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 9px;
+    color: var(--highlight);
+  }
+  
+  .botn-shared-doc{
+    top: -5px;
+    bottom: 0px;
+    left: 45%;
+  }
+  
+  .botn-verify{
+    top: -40px;
+    bottom: 0px;
+    left: 68%;
+    right: 10%;
+  }
+  
+  
+  
+  /* Configurations for Hero section */
+  
+  .hero{
+    height: 500px;
+    width: 100%;
+    position: relative;
+    top: 50%;
+    
+  
+  }
+  
+  .hero-container{
+    background: #c2c8d7;
+    width: 50%;
+    height: 50%;
+  }
+  
