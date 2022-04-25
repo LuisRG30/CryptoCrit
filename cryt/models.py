@@ -23,7 +23,7 @@ class Document(models.Model):
     document = models.FileField(null=True, upload_to='documents')
     signature = models.FileField(null=True, upload_to='signatures')
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    shared_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='shared', blank=True)
+    shared_with = models.ManyToManyField(User, related_name='shared', blank=True)
     signed = models.DateTimeField(null=True, blank=True)
     reason = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, default="Mexico")

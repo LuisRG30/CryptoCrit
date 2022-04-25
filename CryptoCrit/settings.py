@@ -20,12 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+#SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'django-insecure-oiqg#77p$w-3-25j_y@erqn*i@a5&dud7o005qmhwvul8_oh86'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['crypto-cryt.herokuapp.com']
+ALLOWED_HOSTS = ['*', 'crypto-cryt.herokuapp.com']
 
 
 # Application definition
@@ -83,8 +84,8 @@ WSGI_APPLICATION = 'CryptoCrit.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-"""
+# Switch between databases for dev and prod
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -103,6 +104,7 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -162,13 +164,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/media/'
 
 #S3 buckets
-AWS_ACCESS_KEY_ID = os.environ['ACCESS_KEY']
-AWS_SECRET_ACCESS_KEY = os.environ['SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = 'giosigner'
+#Comment out in dev environment
+#AWS_ACCESS_KEY_ID = os.environ['ACCESS_KEY']
+#AWS_SECRET_ACCESS_KEY = os.environ['SECRET_ACCESS_KEY']
+#AWS_STORAGE_BUCKET_NAME = 'giosigner'
 
+#Comment out in dev environment
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

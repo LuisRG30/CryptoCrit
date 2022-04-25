@@ -43,6 +43,17 @@ def index(request):
                 #Create document object
                 document = Document.objects.create(owner=user, signed=datetime.now())
 
+                #Register share relationships
+                share_text = form.cleaned_data['share']
+                share_text = share_text.replace(' ', '')
+                share_usernames = share_text.split(',')
+
+                share = User.objects.filter(username__in=share_usernames)
+
+                
+
+                document.shared_with.add(*share)
+
                 writer.addMetadata({"/Docid": str(document.id)})
 
                 writer.write(file)
