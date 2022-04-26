@@ -3,7 +3,7 @@
 
 /*General configurations*/
 body{
-    min-width:    1000px;
+    min-width:    1600px;
     height:       auto;
     max-height:   1000px;
     margin-top:   3px;
@@ -12,16 +12,18 @@ body{
     margin-bottom: 1px;
 
     font-family: 'sans-serif', sans-serif;
-    background: var(--primary-DEFAULT) none repeat scroll 0% 0%;
+    background: var(--bg-color) none repeat scroll 0% 0%;
   
     /*Color theme*/
-    --primary-DEFAULT:      #dce0e9;
-    --secondary-color:      #9097aa;
-    --terciary-color:       #dce0e9;
-    --highlight:            #5294e2;
+    --primary-DEFAULT:      #113d72;
+    --secondary-color:      #cccccc;
+    --terciary-color:       #ffa300;
+    --highlight:            #0c4e9b;
     --highlight2:           #5294e2;
-    --primary-text:         #dfe7e3; 
+    --primary-text:         #dfe7e3;
+    --primary-text-dark:    #6c6c6c;
     --secondary-text:       #010302; 
+    --bg-color:             #f9f7f2;
 
 
     /* Color scheme Login bar*/
@@ -35,14 +37,14 @@ body{
     ---righ-background-color: #ced7e2;
 
     /* Color scheme navbar*/
-    ---navbar-background-color: #08121f;
+    ---navbar-background-color: #a9bcc0;
 
 
 }
   
 /* Font parameters*/
 h1,h2,h3{
-    font-weight: 700;
+    font-weight: 720;
     color: var(--primary-text)
 }
 
@@ -61,8 +63,11 @@ h4,h5{
     background-color: var(--login-background-color);
     width: 350px;
     height: 100%;
+    border-right-style: solid;
+
 
 }
+
 
 .profile{
     position: relative;
@@ -78,7 +83,7 @@ h4,h5{
     top: 40px;
     left: 75px;
     margin-bottom: 15px;
-    border: 3px solid var(--primary-DEFAULT);
+    border: 3px solid var(--secondary-color);
     border-radius: 100px;
 }
 
@@ -92,7 +97,7 @@ h4,h5{
 
 .profile-name > a{
     display: block;
-    background-color: var(--primary-DEFAULT);
+    background-color: var(--secondary-color);
     color: #202124 ;
     text-decoration: none;
     font-size: 130%;
@@ -106,11 +111,29 @@ h4,h5{
     top: 30px;
 }
 
+.button{
+    position: relative;
+    text-decoration: underline;
+    color: var(--primary-text);
+    left: 60px;
+    font-size: 108%;
+    top: 10px;
+}
+
+.primaryAction{
+    position: relative;
+    width: 80px;
+    height: 30px;
+    font-size: 100%;
+    left: 5px;
+    top: 10px;
+}
+
 .text-title-sign-in{
     position: relative;
     bottom: 15px;
     font-size: 130%;
-    color: var(---righ-background-color);
+    color: var(--primary-text);
     text-align: center;
 }
 
@@ -118,6 +141,22 @@ h4,h5{
     position: relative;
     bottom: 20px;
     left: 25px;
+    color: var(--primary-text);
+}
+
+.login-box ::placeholder{
+    color: var(--secondary-text);
+    background-color: var(--secondary-color);
+    border-style: solid;
+    border-color: #6c6c6c;
+    font-size: 110%;
+}
+
+.holder-pass{
+    position: relative;
+    left: 7px;
+    width: 172px;
+    height: 22px;
 }
 
 
@@ -125,7 +164,7 @@ h4,h5{
     position: relative;
     margin-top: 30px;
     top: 80px;
-    background-color: #202124;
+    background-color: var(--terciary-color);
     width: 350px;
     height: 58px;
 }
@@ -136,6 +175,7 @@ h4,h5{
     top: 20px;
     left: 80px;
     color: var(--primary-text);
+    font-weight: 510;
 
 }
 
@@ -146,32 +186,50 @@ h4,h5{
     bottom: 30px;
     left: 15px;
     margin-bottom: 1px;
-    border: 3px solid var(--primary-DEFAULT);
+    border: 3px solid var(--secondary-color);
     border-radius: 100px;
 }
 
 .sign-up{
     position: relative;
+    height: 100px;
+    width: auto;
     top: 120px;
+}
+
+
+.text-or{
+    position: relative;
+    text-align: center;
+    font-weight: 550;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: larger;
+    bottom: 20px;
 }
 
 .title-sign-up{
     position: relative;
     left: 10px;
+    bottom: 20px;
 }
 
 .body-sign-up{
     position: relative;
     left: 240px;
-    bottom: 20px;
+    bottom: 40px;
 }
 
+.sign-up-link{
+    text-decoration: underline;
+    color: var(--primary-text);
+}
 
 /* Configurations for all right section*/
 .all-right{
     position: fixed;
     top: -7px;
-    left: 350px;
+    left: 355px;
     width: 80%;
     height: auto;
 }
@@ -181,33 +239,70 @@ h4,h5{
 
 .nav-bar{
     position: absolute;
-    background-color: var(---navbar-background-color);
+    background-color: var(--highlight);
     width: 100%;
     height: 50px;
     top: 10px;
+    left: 2px;
 }
 
 .nav-bar-section{
     position: absolute;
+    top: 13px;
+    left: 150px;
 }
 
 .logo-navbar{
     position: relative;
-    left: 30px;
+    font-size: 130%;
+    font-weight: 550;
+    color: var(--terciary-color);
+    text-decoration: none;
+
 }
 
 .button-navbar1{
     position: relative;
+    display: block;
+    background-color: #226bc1;
+    color: #010302;
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--secondary-color);
+    width: 80px;
+    text-align: center;
+    height: auto;
     left: 700px;
 }
 
 .button-navbar2{
     position: relative;
+    display: block;
+    background-color: #226bc1;
+    color: #010302;
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--secondary-color);
+    width: 80px;
+    text-align: center;
+    height: auto;
     left: 800px;
 }
 
 .button-navbar3{
     position: relative;
+    display: block;
+    background-color: #226bc1;
+    color: #010302;
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--secondary-color);
+    width: 80px;
+    text-align: center;
+    height: auto;
     left: 900px;
 }
 
@@ -218,7 +313,13 @@ h4,h5{
     width: 80%;
     height: auto;
 }
-
+.top-carousell{
+    position: relative;
+    color: var(--secondary-text);
+    text-align: center;
+    bottom: 100px;
+    left: 100px;
+}
 
 .carousell{
     position: absolute;
@@ -234,6 +335,7 @@ h4,h5{
     top: 160px;
     padding-bottom: 10px;
     padding-top: 10px;
-    background-color:   #5294e2;
+    padding-right: 10px;
+    background-color:   var(--terciary-color);
     padding-left: 10px;
 }
