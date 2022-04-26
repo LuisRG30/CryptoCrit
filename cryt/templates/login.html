@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <!-- Tell Django to load CSS folder-->
-{% load static %}
+<!-- Uncomment when django-->
+<!--{% load static %}-->
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
@@ -11,7 +12,10 @@
     <meta name="author" content="TEC_IDM2022">
 
     <!-- CSS style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'cryt/login.css' %}">
+    <!-- Uncoment this when load to django -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'cryt/login.css' %}"> -->
+    <!--Comment this when uncoment above-->
+    <link rel="stylesheet" href="../static/cryt/login.css">
 
     <!-- Icons-->
     <link rel="icon" href="resources/icon/web-imagotipo_16x16.png" sizes="16x16" type="image/png">
@@ -28,10 +32,10 @@
       <!-- Profile picture -->
       <div class="profile-picture">
         <!--User profile picture-->
-        <img class="img-profile" alt="Image user profile" src="../static/cryt/img/user.png">
+        <img class="img-profile img.rounded-circle" alt="Image user profile" src="../static/cryt/img/user.png">
       </div>
       <div class="profile-name">
-        <a class="nav-link disabled" href="#">Super user</a>
+        <a class="nav-link disabled" href="#">User name</a>
       </div>
     </div>
     <div class="sign-in">
@@ -76,7 +80,7 @@
     </div>
     <div class="third-services-login">
      <!-- Third services login --> 
-      <p> Login with Google account</p>
+      <p class="text-google"> Login with Google account</p>
       <div class="third-services-img">
         <img class="img-tmp" alt="Google account logo" src="../static/cryt/img/google_logo.jpg">
       </div>
@@ -102,15 +106,15 @@
       </div>
       <div class="nav-bar-section">
         <!-- placeholder for a button-->
-        <a class="button-navbar" href="#"> Menu 1</a>
+        <a class="button-navbar1" href="#"> Menu 1</a>
       </div>
       <div class="nav-bar-section">
         <!-- placeholder for a button-->
-        <a class="button-navbar" href="#"> Menu 2</a>
+        <a class="button-navbar2" href="#"> Menu 2</a>
       </div>
       <div class="nav-bar-section">
         <!-- placeholder for a button-->
-        <a class="button-navbar" href="#"> Menu 3</a>
+        <a class="button-navbar3" href="#"> Menu 3</a>
       </div>
     </nav>
 
@@ -121,7 +125,7 @@
       </div>
       <div class="carousell">
         <!-- Here is the part for the carousell-->
-        <img class="img-tmp" alt="Teleton template" src="../static/cryt/img/teleton.jpg">
+        <img class="img-carousell" alt="Teleton template" src="../static/cryt/img/teleton.jpg">
       </div>
       <div class="image-carousell-bottom">
         <!-- Color space: decoration-->

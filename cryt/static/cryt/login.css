@@ -4,35 +4,236 @@
 /*General configurations*/
 body{
     min-width:    1000px;
-    margin-top:   50px;
-    margin-left:  70px;
-    margin-right: 70px;
+    height:       auto;
+    max-height:   1000px;
+    margin-top:   3px;
+    margin-left:  0px;
+    margin-right: 0px;
+    margin-bottom: 1px;
+
     font-family: 'sans-serif', sans-serif;
-    background: var(--terciary-color) none repeat scroll 0% 0%;
+    background: var(--primary-DEFAULT) none repeat scroll 0% 0%;
   
     /*Color theme*/
     --primary-DEFAULT:      #dce0e9;
-    --primary-dark-DEFAULT: #bcc3d1;
     --secondary-color:      #9097aa;
-    --highlight:            #5294e2;
-    --primary-text:         #010302; 
-    --secondary-text:       #010302; 
     --terciary-color:       #dce0e9;
+    --highlight:            #5294e2;
+    --highlight2:           #5294e2;
+    --primary-text:         #dfe7e3; 
+    --secondary-text:       #010302; 
+
+
+    /* Color scheme Login bar*/
+    --login-background-color:         #0b2b52;
+    --login-background-profile-color: #113d72;
+
+
+
+
+    /* Color scheme All right section*/
+    ---righ-background-color: #ced7e2;
+
+    /* Color scheme navbar*/
+    ---navbar-background-color: #08121f;
+
+
+}
   
-  }
-  
-  /* Font parameters*/
-  h1,h2,h3{
+/* Font parameters*/
+h1,h2,h3{
     font-weight: 700;
     color: var(--primary-text)
-  }
+}
 
-  h4,h5{
-    font-weight: 400;
+h4,h5{
+    font-weight: 500;
     color: var(--primary-text)
-  }
-  
-  /* Configurations for index*/
-  
-  /* Conf navigation bar and title*/
-  
+}
+
+
+
+/* Configurations for Login bar*/
+
+
+.login-bar{
+    position: relative;
+    background-color: var(--login-background-color);
+    width: 350px;
+    height: 100%;
+
+}
+
+.profile{
+    position: relative;
+    margin-bottom: 30px;
+    background-color: var(--login-background-profile-color);
+}
+
+
+.img-profile{
+    position: relative;
+    width: 200px;
+    height: 195px;
+    top: 40px;
+    left: 75px;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-DEFAULT);
+    border-radius: 100px;
+}
+
+.profile-name{
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+    top: 30px;
+    margin-bottom: 20px;
+}
+
+.profile-name > a{
+    display: block;
+    background-color: var(--primary-DEFAULT);
+    color: #202124 ;
+    text-decoration: none;
+    font-size: 130%;
+}
+
+.sign-in{
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--highlight);
+    top: 30px;
+}
+
+.text-title-sign-in{
+    position: relative;
+    bottom: 15px;
+    font-size: 130%;
+    color: var(---righ-background-color);
+    text-align: center;
+}
+
+.login-box{
+    position: relative;
+    bottom: 20px;
+    left: 25px;
+}
+
+
+.third-services-login{
+    position: relative;
+    margin-top: 30px;
+    top: 80px;
+    background-color: #202124;
+    width: 350px;
+    height: 58px;
+}
+
+.text-google{
+    position: inherit;
+    width: 260px;
+    top: 20px;
+    left: 80px;
+    color: var(--primary-text);
+
+}
+
+.img-tmp{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    bottom: 30px;
+    left: 15px;
+    margin-bottom: 1px;
+    border: 3px solid var(--primary-DEFAULT);
+    border-radius: 100px;
+}
+
+.sign-up{
+    position: relative;
+    top: 120px;
+}
+
+.title-sign-up{
+    position: relative;
+    left: 10px;
+}
+
+.body-sign-up{
+    position: relative;
+    left: 240px;
+    bottom: 20px;
+}
+
+
+/* Configurations for all right section*/
+.all-right{
+    position: fixed;
+    top: -7px;
+    left: 350px;
+    width: 80%;
+    height: auto;
+}
+
+
+/* Configurations for Navigation bar*/
+
+.nav-bar{
+    position: absolute;
+    background-color: var(---navbar-background-color);
+    width: 100%;
+    height: 50px;
+    top: 10px;
+}
+
+.nav-bar-section{
+    position: absolute;
+}
+
+.logo-navbar{
+    position: relative;
+    left: 30px;
+}
+
+.button-navbar1{
+    position: relative;
+    left: 700px;
+}
+
+.button-navbar2{
+    position: relative;
+    left: 800px;
+}
+
+.button-navbar3{
+    position: relative;
+    left: 900px;
+}
+
+/* Configurations for Carousell*/
+.image-carousell{
+    position: relative;
+    top: 200px;
+    width: 80%;
+    height: auto;
+}
+
+
+.carousell{
+    position: absolute;
+    top: 0px;
+    width: 1390px;
+    height: 800px;
+}
+
+.img-carousell{
+    position: relative;
+    transform: scale(3);
+    left: 750px;
+    top: 160px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color:   #5294e2;
+    padding-left: 10px;
+}
