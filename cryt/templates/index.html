@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
 
     <!-- Icons-->
-    <link rel="icon" href="/cryt/static/cryt/img/lock.jpg" sizes="16x16" type="image/png">
+    <link rel="icon" href="{% static 'cryt/img/lock.jpg' %}" sizes="16x16" type="image/png">
     <meta name="theme-color" content="#7952b3">
     
     <!-- Title -->
@@ -27,24 +27,27 @@
         <!-- Profile picture -->
         <div class="profile-picture">
           <!--User profile picture-->
-          <img class="img-profile img.rounded-circle" alt="Image user profile" src="#">
+          <img class="img-profile img.rounded-circle" alt="Image user profile" src="{% static 'cryt/img/smileygirl.png' %}">
+        </div>
+        <div class="welcome-msg-box">
+          <h3 class="welcome-msg">Welcome</h3>
         </div>
         <div class="profile-name">
           <a class="nav-link disabled" href="#">{{ user }}</a>
         </div>
       </div>
-      <div class="sign-in">
+      <div class="menu-box">
         <!-- Inboxes for sign in-->
-        <div class="signin-title">
-          <h4 class="text-title-sign-in"> Menu </h4>
+        <div class="menu-title-box">
+          <h4 class="menu-title"> Menu </h4>
         </div>
-        <div class="botn botn-menu botn-style">
+        <div class="button-menu botton-menu-style button-pos1">
             <a class="menu-botton" href="{% url 'mydocs' %}">My documents</a>
         </div>
-        <div class="botn-shared-doc botn-menu botn-style">
+        <div class="button-menu botton-menu-style button-pos2">
             <a class="menu-botton" href="{% url 'shared' %}">My shares</a>
         </div>
-        <div class="botn-shared-doc botn-menu botn-style">
+        <div class="button-menu botton-menu-style button-pos3">
             <a class="menu-botton" href="{% url 'history' %}">My Activity</a>
         </div>     
       </div>
@@ -81,7 +84,7 @@
         </div>
         <div class="carousell">
           <!-- Here is the part for the carousell-->
-          <img class="img-carousell" alt="Teleton template" src="../static/cryt/img/teleton.jpg">
+          <img class="img-carousell" alt="Teleton template" src="{% static 'cryt/img/teleton.jpg' %}">
         </div>
         <div class="image-carousell-bottom">
           <!-- Color space: decoration-->
