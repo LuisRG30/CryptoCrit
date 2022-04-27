@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+{% load static %}
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web-base multi digital signature tool">
+    <meta name="author" content="TEC_IDM2022">
+
+    <!-- CSS style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/profile.css' %}">
+
+    <!-- Icons-->
+    <link rel="icon" href="{% static 'cryt/img/lock.jpg' %}" sizes="16x16" type="image/png">
+    <meta name="theme-color" content="#7952b3">
+    
+    <!-- Title -->
+    <title>GIO - profile</title>
+</head>
+
+<body>
+    <!-- Section: Login left-side bar -->
+    <section class="login-bar">
+      <div class="profile">
+        <!-- Profile picture -->
+        <div class="profile-picture">
+          <!--User profile picture-->
+          <img class="img-profile img.rounded-circle" alt="Image user profile" src="{% static 'cryt/img/smileygirl.png' %}">
+        </div>
+        <div class="welcome-msg-box">
+          <h3 class="welcome-msg">Welcome</h3>
+        </div>
+        <div class="profile-name">
+          <a class="nav-link disabled" href="#">{{ user }}</a>
+        </div>
+      </div>
+      <div class="menu-box">
+        <!-- Inboxes for sign in-->
+        <div class="menu-title-box">
+          <h4 class="menu-title"> Menu </h4>
+        </div>
+        <div class="button-menu botton-menu-style button-pos1">
+            <a class="menu-botton" href="{% url 'mydocs' %}">My documents</a>
+        </div>
+        <div class="button-menu botton-menu-style button-pos2">
+            <a class="menu-botton" href="{% url 'shared' %}">My shares</a>
+        </div>
+        <div class="button-menu botton-menu-style button-pos3">
+            <a class="menu-botton" href="{% url 'history' %}">My Activity</a>
+        </div>     
+      </div>
+      
+    </section>
+    
+    <!-- Section: Navigabition bar & Image carousell -->
+    <section class="all-right">
+      <nav class="nav-bar">
+        <!-- Navigation bar -->
+        <div class="nav-bar-section">
+          <!-- Logo in navbar-->
+          <a class="logo-navbar" href="{% url 'index' %}">CryptoCryt</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar1" href="{% url 'verify' %}"> Verify</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar2" href="#"> Test</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar3" href="{% url 'account_logout' %}"> Log Out</a>
+        </div>
+      </nav>
+   
+    </section>
+  </body>
+</html>
