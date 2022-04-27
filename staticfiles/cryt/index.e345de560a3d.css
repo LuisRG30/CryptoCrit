@@ -1,144 +1,341 @@
-/* CSS Style for all html's*/
+/* CSS Style for login.html*/
 
 
 /*General configurations*/
 body{
-    min-width:    1000px;
-    margin-top:   50px;
-    margin-left:  70px;
-    margin-right: 70px;
-    font-family: 'sans-serif', sans-serif;
-    background: var(--terciary-color) none repeat scroll 0% 0%;
-  
-    /*Color theme*/
-    --primary-DEFAULT:      #dce0e9;
-    --primary-dark-DEFAULT: #bcc3d1;
-    --secondary-color:      #9097aa;
-    --highlight:            #5294e2;
-    --primary-text:         #010302; 
-    --terciary-color:       #dce0e9;
-  
-  }
-  
-  /* Font parameters*/
-  h1,h2,h3,h4,h5{
-    font-weight: 700;
-    color: var(--primary-text)
-  }
-  
-  /* Configurations for index*/
-  
-  /* Conf navigation bar and title*/
-  
-  .navbar{
-    position: relative;
-    margin-top: 1%;
-    margin-bottom: 0%;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-DEFAULT);
-  }
-  
-  .navbar-welcome{
-    position: relative;
-    border-right: solid;
-    border-right-width: 0.5%;
-    width: 33.32%;
-    height: 50%;
-    text-align: center;
-    left: -5%;
-  }
-  
-  .webname{
-    color: var(--highlight);
-    font-size: 200%;
-    position: relative;
-    top: 10px;
-    left: 5px;
-  }
-  
-  .webname-h2{
-   margin-top: 0;
-   margin-bottom: 0;
-  }
-  
-  .title{
-    position: relative;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-  }
-  
-  .navbar-menu{
-    position: relative;
-    left: 35%;
-    width: 66.64%;
-    height: 50%;
-    top: -148.11px
-  }
-  
-  .menu-botton{
-    display: block;
-    text-decoration: none;
-    font-size: 120%;
-    color: #0b0b0b ;
-  }
-  
-  .botn-menu{
-    position: relative;
-    width: 20%;
-    text-align: center;
-    height: auto;
-    top: 50px
-  }
-  
-  .botn-mydocs{
-    bottom: 0px;
-    top: 30px;
-    left: 22%;
-  }
-  
-  .botn-style{
-    background-color: var(--highlight);
-    border: solid black;
-    border-top-width: 1px;
-    border-bottom-width: 4px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    border-radius: 9px;
-    color: var(--highlight);
-  }
-  
-  .botn-shared-doc{
-    top: -5px;
-    bottom: 0px;
-    left: 45%;
-  }
-  
-  .botn-verify{
-    top: -40px;
-    bottom: 0px;
-    left: 68%;
-    right: 10%;
-  }
-  
-  
-  
-  /* Configurations for Hero section */
-  
-  .hero{
-    height: 500px;
-    width: 100%;
-    position: relative;
-    top: 50%;
-    
-  
-  }
-  
-  .hero-container{
-    background: #c2c8d7;
-    width: 50%;
-    height: 50%;
-  }
-  
+  min-width:    1600px;
+  height:       auto;
+  max-height:   1000px;
+  margin-top:   3px;
+  margin-left:  0px;
+  margin-right: 0px;
+  margin-bottom: 1px;
+
+  font-family: 'sans-serif', sans-serif;
+  background: var(--bg-color) none repeat scroll 0% 0%;
+
+  /*Color theme*/
+  --primary-DEFAULT:      #113d72;
+  --secondary-color:      #cccccc;
+  --terciary-color:       #ffa300;
+  --highlight:            #0c4e9b;
+  --highlight2:           #5294e2;
+  --primary-text:         #dfe7e3;
+  --primary-text-dark:    #6c6c6c;
+  --secondary-text:       #010302; 
+  --bg-color:             #f9f7f2;
+
+
+  /* Color scheme Login bar*/
+  --login-background-color:         #0b2b52;
+  --login-background-profile-color: #113d72;
+
+
+
+
+  /* Color scheme All right section*/
+  ---righ-background-color: #ced7e2;
+
+  /* Color scheme navbar*/
+  ---navbar-background-color: #a9bcc0;
+
+
+}
+
+/* Font parameters*/
+h1,h2,h3{
+  font-weight: 720;
+  color: var(--primary-text)
+}
+
+h4,h5{
+  font-weight: 500;
+  color: var(--primary-text)
+}
+
+
+
+/* Configurations for Login bar*/
+
+
+.login-bar{
+  position: relative;
+  background-color: var(--login-background-color);
+  width: 350px;
+  height: 100%;
+  border-right-style: solid;
+
+
+}
+
+
+.profile{
+  position: relative;
+  margin-bottom: 30px;
+  background-color: var(--login-background-profile-color);
+}
+
+
+.img-profile{
+  position: relative;
+  width: 200px;
+  height: 195px;
+  top: 40px;
+  left: 75px;
+  margin-bottom: 15px;
+  border: 3px solid var(--secondary-color);
+  border-radius: 100px;
+}
+
+.profile-name{
+  position: relative;
+  margin-top: 10px;
+  text-align: center;
+  top: 30px;
+  margin-bottom: 20px;
+}
+
+.profile-name > a{
+  display: block;
+  background-color: var(--secondary-color);
+  color: #202124 ;
+  text-decoration: none;
+  font-size: 130%;
+}
+
+.sign-in{
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--highlight);
+  top: 30px;
+}
+
+.button{
+  position: relative;
+  text-decoration: underline;
+  color: var(--primary-text);
+  left: 60px;
+  font-size: 108%;
+  top: 10px;
+}
+
+.primaryAction{
+  position: relative;
+  width: 80px;
+  height: 30px;
+  font-size: 100%;
+  left: 5px;
+  top: 10px;
+}
+
+.text-title-sign-in{
+  position: relative;
+  bottom: 15px;
+  font-size: 130%;
+  color: var(--primary-text);
+  text-align: center;
+}
+
+.login-box{
+  position: relative;
+  bottom: 20px;
+  left: 25px;
+  color: var(--primary-text);
+}
+
+.login-box ::placeholder{
+  color: var(--secondary-text);
+  background-color: var(--secondary-color);
+  border-style: solid;
+  border-color: #6c6c6c;
+  font-size: 110%;
+}
+
+.holder-pass{
+  position: relative;
+  left: 7px;
+  width: 172px;
+  height: 22px;
+}
+
+
+.third-services-login{
+  position: relative;
+  margin-top: 30px;
+  top: 80px;
+  background-color: var(--terciary-color);
+  width: 350px;
+  height: 58px;
+}
+
+.text-google{
+  position: inherit;
+  width: 260px;
+  top: 20px;
+  left: 80px;
+  color: var(--primary-text);
+  font-weight: 510;
+
+}
+
+.img-tmp{
+  position: relative;
+  width: 35px;
+  height: 35px;
+  bottom: 30px;
+  left: 15px;
+  margin-bottom: 1px;
+  border: 3px solid var(--secondary-color);
+  border-radius: 100px;
+}
+
+.sign-up{
+  position: relative;
+  height: 100px;
+  width: auto;
+  top: 120px;
+}
+
+
+.text-or{
+  position: relative;
+  text-align: center;
+  font-weight: 550;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: larger;
+  bottom: 20px;
+}
+
+.title-sign-up{
+  position: relative;
+  left: 10px;
+  bottom: 20px;
+}
+
+.body-sign-up{
+  position: relative;
+  left: 240px;
+  bottom: 40px;
+}
+
+.sign-up-link{
+  text-decoration: underline;
+  color: var(--primary-text);
+}
+
+/* Configurations for all right section*/
+.all-right{
+  position: fixed;
+  top: -7px;
+  left: 355px;
+  width: 80%;
+  height: auto;
+}
+
+
+/* Configurations for Navigation bar*/
+
+.nav-bar{
+  position: absolute;
+  background-color: var(--highlight);
+  width: 100%;
+  height: 50px;
+  top: 10px;
+  left: 2px;
+}
+
+.nav-bar-section{
+  position: absolute;
+  top: 13px;
+  left: 150px;
+}
+
+.logo-navbar{
+  position: relative;
+  font-size: 130%;
+  font-weight: 550;
+  color: var(--terciary-color);
+  text-decoration: none;
+
+}
+
+.button-navbar1{
+  position: relative;
+  display: block;
+  background-color: #226bc1;
+  color: #010302;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: var(--secondary-color);
+  width: 80px;
+  text-align: center;
+  height: auto;
+  left: 700px;
+}
+
+.button-navbar2{
+  position: relative;
+  display: block;
+  background-color: #226bc1;
+  color: #010302;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: var(--secondary-color);
+  width: 80px;
+  text-align: center;
+  height: auto;
+  left: 800px;
+}
+
+.button-navbar3{
+  position: relative;
+  display: block;
+  background-color: #226bc1;
+  color: #010302;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: var(--secondary-color);
+  width: 80px;
+  text-align: center;
+  height: auto;
+  left: 900px;
+}
+
+/* Configurations for Carousell*/
+.image-carousell{
+  position: relative;
+  top: 200px;
+  width: 80%;
+  height: auto;
+}
+.top-carousell{
+  position: relative;
+  color: var(--secondary-text);
+  text-align: center;
+  bottom: 100px;
+  left: 100px;
+}
+
+.carousell{
+  position: absolute;
+  top: 0px;
+  width: 1390px;
+  height: 800px;
+}
+
+.img-carousell{
+  position: relative;
+  transform: scale(3);
+  left: 750px;
+  top: 160px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  background-color:   var(--terciary-color);
+  padding-left: 10px;
+}

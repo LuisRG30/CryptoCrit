@@ -13,65 +13,80 @@
     <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
 
     <!-- Icons-->
-    <link rel="icon" href="resources/icon/web-imagotipo_16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/cryt/static/cryt/img/lock.jpg" sizes="16x16" type="image/png">
     <meta name="theme-color" content="#7952b3">
     
     <!-- Title -->
-    <title>Digital Signatures</title>
+    <title>GIO - dsigner</title>
 </head>
 
 <body>
-    <!-- Header -->
-    <nav class="navbar">
-        <div class="navbar-welcome">
-            <div class="logo">
-                <div class="webname">
-                    <h2 class="webname-h2" >GIO</h2>
-                </div>
-                <div class="logo-text">
-                    <h4 style="color: var(--highlight);">The fastest digital signer</h4>
-                </div>
-            </div>
+    <!-- Section: Login left-side bar -->
+    <section class="login-bar">
+      <div class="profile">
+        <!-- Profile picture -->
+        <div class="profile-picture">
+          <!--User profile picture-->
+          <img class="img-profile img.rounded-circle" alt="Image user profile" src="#">
         </div>
-        <div class="navbar-menu" style="bottom: 0px;top: -118.11px;">
-            <div class="botn-mydocs botn-menu  botn-style">
-                <a class="menu-botton" href="{% url 'mydocs' %}">My documents</a>
-            </div>
-            <div class="botn-shared-doc botn-menu botn-style">
-                <a class="menu-botton" href="{% url 'shared' %}">Shared with me</a>
-            </div>
-            <div class="botn-verify  botn-menu botn-style">
-                <a class="menu-botton" href="{% url 'verify' %}">Verify a document</a>
-            </div>
-            <div class="botn-verify  botn-menu botn-style">
-                <a class="menu-botton" href="{% url 'history' %}">Activity Log</a>
-            </div>    
-            <div class="botn-verify  botn-menu botn-style">
-                <a class="menu-botton" href="{% url 'account_logout' %}">Logout</a>
-            </div>         
+        <div class="profile-name">
+          <a class="nav-link disabled" href="#">{{ user }}</a>
         </div>
-    </nav>
-
-    <br>
-    <section class="hero">
-        <div class="title">
-            <h2>Welcome back, {{ user }}</h2>
+      </div>
+      <div class="sign-in">
+        <!-- Inboxes for sign in-->
+        <div class="signin-title">
+          <h4 class="text-title-sign-in"> Menu </h4>
         </div>
-        <div class="hero-container">
-            <div class="hero-title">
-                <h2>Document sign</h2>
-            </div>
-            <div class="hero-instructions">
-                <p class="text-smooth"> Sign a document</p>
-            </div>
-            <div class="hero-encription">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
+        <div class="botn botn-menu botn-style">
+            <a class="menu-botton" href="{% url 'mydocs' %}">My documents</a>
         </div>
+        <div class="botn-shared-doc botn-menu botn-style">
+            <a class="menu-botton" href="{% url 'shared' %}">My shares</a>
+        </div>
+        <div class="botn-shared-doc botn-menu botn-style">
+            <a class="menu-botton" href="{% url 'history' %}">My Activity</a>
+        </div>     
+      </div>
+      
     </section>
-</body>
+    
+    <!-- Section: Navigabition bar & Image carousell -->
+    <section class="all-right">
+      <nav class="nav-bar">
+        <!-- Navigation bar -->
+        <div class="nav-bar-section">
+          <!-- Logo in navbar-->
+          <a class="logo-navbar" href="{% url 'index' %}">CryptoCryt</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar1" href="{% url 'verify' %}"> Verify</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar2" href="#"> Test</a>
+        </div>
+        <div class="nav-bar-section">
+          <!-- placeholder for a button-->
+          <a class="button-navbar3" href="{% url 'account_logout' %}"> Log Out</a>
+        </div>
+      </nav>
+  
+      <!-- Image carousell-->
+      <section class="image-carousell">
+        <div class="image-carousell-top">
+          <!-- Color space: decoration-->
+          <h2 class="top-carousell"> A faster way to sign digital documents</h2>
+        </div>
+        <div class="carousell">
+          <!-- Here is the part for the carousell-->
+          <img class="img-carousell" alt="Teleton template" src="../static/cryt/img/teleton.jpg">
+        </div>
+        <div class="image-carousell-bottom">
+          <!-- Color space: decoration-->
+        </div>
+      </section>
+    </section>
+  </body>
 </html>
