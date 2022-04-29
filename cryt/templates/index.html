@@ -32,8 +32,8 @@
         <div class="welcome-msg-box">
           <h3 class="welcome-msg">Welcome</h3>
         </div>
-        <div class="profile-name">
-          <a class="nav-link disabled" href="#">{{ user }}</a>
+        <div class="profile-name-box">
+          <a class="nav-link-profile" href="#">{{ user }}</a>
         </div>
       </div>
       <div class="menu-box">
@@ -41,14 +41,16 @@
         <div class="menu-title-box">
           <h4 class="menu-title"> Menu </h4>
         </div>
-        <div class="button-menu botton-menu-style button-pos1">
-            <a class="menu-botton" href="{% url 'mydocs' %}">My documents</a>
+        <div class="menu-options-box">
+          <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos1" href="{% url 'mydocs' %}">My documents</a>
         </div>
-        <div class="button-menu botton-menu-style button-pos2">
-            <a class="menu-botton" href="{% url 'shared' %}">My shares</a>
+        <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos2" href="{% url 'shared' %}">My shares</a>
         </div>
-        <div class="button-menu botton-menu-style button-pos3">
-            <a class="menu-botton" href="{% url 'history' %}">My Activity</a>
+        <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos3" href="{% url 'history' %}">My Activity</a>
+        </div>
         </div>     
       </div>
       
