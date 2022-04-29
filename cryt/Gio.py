@@ -16,10 +16,13 @@ class Gio:
         document = file.open('rb')
         message = document.read()
 
+        #Compute hash
+        hash_value = str(rsa.compute_hash(message, 'SHA-512'))
+
         #Sign the document and save signature with document
         signature = rsa.sign(message, privkey, 'SHA-512')
 
-        return signature
+        return signature, hash_value
 
 
     #To implement metadata to detect pulic key to validate against (File coming from user)
@@ -43,3 +46,13 @@ class Gio:
             return True
         except:
             return False
+
+    def hashit(self, file):
+        #Open file and hash
+        document = file.open('rb')
+        message = document.read()
+
+        #Compute hash
+        hash_value = str(rsa.compute_hash(message, 'SHA-512'))
+
+        return hash_value

@@ -32,13 +32,7 @@ def index(request):
 
                 #Include metadata in document prior to hashing
                 file = request.FILES['file']
-                reader =  PdfFileReader(file.open('wb+'))
-                writer = PdfFileWriter()
-                
-                writer.appendPagesFromReader(reader)
-                metadata = reader.getDocumentInfo()
-                
-                writer.addMetadata(metadata)
+                file.open('rb')
 
                 #Create document object
                 document = Document.objects.create(owner=user, signed=datetime.now())
@@ -54,13 +48,9 @@ def index(request):
 
                 document.shared_with.add(*share)
 
-                writer.addMetadata({"/Docid": str(document.id)})
-
-                writer.write(file)
-
 
                 gio = Gio()
-                signature = gio.firmala(file, profile.private_key)
+                signature, hash_value = gio.firmala(file, profile.private_key)
                 
 
                 with open('s', 'wb+') as s:
@@ -69,6 +59,7 @@ def index(request):
                     #Upload to datalake here. Also register share relationships.
                     document.document = file
                     document.signature = File(s)
+                    document.hash = hash_value
                     document.save()
                 file.close()
 
@@ -100,12 +91,12 @@ def verify(request):
         if form.is_valid():
             file = request.FILES['file']
             Event.objects.create(owner=request.user, operation=f"Verify file {file.name}", timestamp=datetime.now())
+            gio = Gio()
             #Read file metadata to fetch user to compare against
             try:
-                reader =  PdfFileReader(file.open())
-                metadata = reader.getDocumentInfo()
-                docid = metadata['/Docid']
-                doc = Document.objects.get(id=docid)
+                file.open('rb')
+                hash_value = gio.hashit(file)
+                doc = Document.objects.get(hash=hash_value)
                 user = doc.owner
             except:
                 return HttpResponse('Could not read file metadata. File is possibly corrupt.')
@@ -113,7 +104,7 @@ def verify(request):
             #Verify signature for given user
             try:
                 profile = UserProfile.objects.get(user=user)
-                gio = Gio()
+                
                 res = gio.verificala(file, doc.signature, profile.public_key)
                 if res:
                     return HttpResponse(f"Signed by user {user}")

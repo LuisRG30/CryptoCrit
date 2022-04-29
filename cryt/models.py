@@ -21,6 +21,7 @@ class UserProfile(models.Model):
 
 class Document(models.Model):
     document = models.FileField(null=True, upload_to='documents')
+    hash = models.TextField(null=True, blank=True)
     signature = models.FileField(null=True, upload_to='signatures')
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     shared_with = models.ManyToManyField(User, related_name='shared', blank=True)
