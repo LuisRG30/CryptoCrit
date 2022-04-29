@@ -1,0 +1,438 @@
+/* CSS Style for login.html*/
+
+
+/*General configurations*/
+body{
+  min-width:      1600px;
+  height:         auto;
+  max-height:     1000px;
+  margin-top:     3px;
+  margin-left:    0px;
+  margin-right:   0px;
+  margin-bottom:  1px;
+
+  font-family: 'sans-serif', sans-serif;
+  background: var(--bg-color) none repeat scroll 0% 0%;
+
+  /*Color theme*/
+  --primary-DEFAULT:      #113d72;
+  --secondary-color:      #cccccc;
+  --terciary-color:       #ffa300;
+  --highlight:            #0c4e9b;
+  --highlight2:           #5294e2;
+  --primary-text:         #dfe7e3;
+  --primary-text-dark:    #6c6c6c;
+  --secondary-text:       #010302; 
+  --bg-color:             #f9f7f2;
+
+
+  /* Color scheme Login bar*/
+  --login-background-color:         #0b2b52;
+  --login-background-profile-color: #113d72;
+
+
+
+
+  /* Color scheme All right section*/
+  ---righ-background-color:   #ced7e2;
+
+  /* Color scheme navbar*/
+  ---navbar-background-color: #a9bcc0;
+
+
+}
+
+/* Font parameters*/
+h1,h2,h3{
+  font-weight: 720;
+  color:       var(--primary-text)
+}
+
+h4,h5{
+  font-weight: 500;
+  color:       var(--primary-text)
+}
+
+
+
+/* Configurations for Login bar*/
+
+
+.login-bar{
+  position:           relative;
+  background-color:   var(--login-background-color);
+  width:              350px;
+  height:             900px;
+  border-right-style: solid;
+
+
+}
+
+
+.profile{
+  position:           relative;
+  margin-bottom:      30px;
+  background-color:   var(--login-background-profile-color);
+}
+
+.profile-picture{
+  position: relative;
+  width:    213px;
+  height:   213px;
+  left:     72px;
+  top:      35px;
+}
+
+
+.img-profile{
+  position:           relative;
+  width:              200px;
+  height:             200px;
+  top:                4px;
+  left:               4px;
+  border:             3px solid var(--secondary-color);
+  border-radius:      100px;
+}
+
+.welcome-msg-box{
+  position:       relative;
+  top:            35px;
+  left:           10px;
+  width:          140px;
+  height:         50px;
+  font-size:      130%;
+}
+
+.welcome-msg{
+  position: relative;
+}
+
+
+.profile-name-box{
+  position:       relative;
+  width:          auto;
+  height:         56px;
+  text-align:     center;
+  top:            25px;
+  background-color: aliceblue;
+}
+
+.nav-link-profile{
+  position: relative;
+  display: block;
+  width: 225px;
+  height: 39px;
+  top: 10px;
+  left: 68px;
+  font-size: 200%;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--primary-text-dark);
+}
+
+.menu-box{
+  position:           relative;
+  padding-top:        10px;
+  padding-bottom:     10px;
+  background-color:   var(--highlight);
+  top:                37px;
+  width:              inherit;
+  height:             400px;
+}
+
+.menu-title-box{
+  position: relative;
+  width:    140px;
+  height:   45px;
+  top:      0px;
+  left:     100px;
+
+}
+
+.menu-title{
+  position:       relative;
+  font-weight:    inherit;
+  font-size:      180%;
+  left:           0px;
+  top:            10px;
+  text-align:     center;
+  margin-bottom:  20px;
+  margin-top:     10px;
+  padding-bottom: 2px;
+  padding-top:    2px;
+}
+
+
+.menu-options-box{
+  position:   relative;
+  width:      325px;
+  height:     287px;
+  top:        17px;
+  left:       10px;
+}
+
+.button-menu{
+  position:             relative;
+  display:              block;
+  width:                260px;
+  height:               57px;
+  padding:              6px 6px 6px 6px;
+  text-decoration:      none;
+  border-top-width:     2px;
+  border-top-style:     solid;
+  border-bottom-width:  2px;
+  border-bottom-style:  solid;
+  border-left-style:    solid;
+  border-left-width:    2px;
+  border-right-style:   solid;
+  border-right-width:   2px;
+  border-style:         solid;
+  border-radius:        25px;
+  margin-bottom:        25px;
+  left:                 20px;
+}
+
+.botton-menu-style{
+  font-weight: 400;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+.button-pos1{
+  position: relative;
+  top: 14px;
+}
+
+.button-pos2{
+  position: relative;
+  top: 14px;
+  
+}
+
+.button-pos3{
+  position: relative;
+  top: 14px;
+  
+}
+
+.menu-botton{
+  text-decoration: none;
+  font-size: 140%;
+  color: black;
+}
+
+.button{
+  position:         relative;
+  text-decoration:  underline;
+  color:            var(--primary-text);
+  left:             60px;
+  font-size:        108%;
+  top:              10px;
+}
+
+
+
+/* Configurations for all right section*/
+.all-right-box{
+  position:   fixed;
+  top:        -7px;
+  left:       355px;
+  width:      80%;
+  height:     auto;
+}
+
+
+/* Configurations for Navigation bar*/
+
+.nav-bar{
+  position:         absolute;
+  background-color: var(--highlight);
+  width:            100%;
+  height:           60px;
+  top:              10px;
+  left:             2px;
+}
+
+.nav-bar-section{
+  position:         absolute;
+  width:            336px;
+  height:           59px;
+  top:              1px;
+  left:             24px;
+}
+
+.menu-nav{
+  position: relative;
+  width:    110px;
+  height:   50px;
+  right:    0px;
+  bottom:   0px;
+}
+
+.backward-arrow-box{
+  position:   relative;
+  height:     45px;
+  width:      40px;
+  top:        9px;
+}
+
+.backward-arrow-link{
+  position: relative;
+  display:  block;
+  height:   40px;
+}
+
+.backward-arrow-img{
+  position: relative;
+}
+
+.forward-arrow-box{
+  position: relative;
+  height:   45px;
+  width:    40px;
+  left:     65px;
+  bottom:   36px;
+}
+
+.forward-arrow-link{
+  position: relative;
+}
+
+.forward-arrow-img{
+  position: relative;
+}
+
+
+.logo-teleton-box{
+  position:     relative;
+  bottom:       44px;
+  left:         161px;
+}
+
+.logo-teleton-img{
+  position: relative;
+}
+
+.nav-bar-buttons-box{
+  position:           relative;
+  width:              850px;
+  height:             45px;
+  top:                7px;
+  left:               665px;
+}
+
+
+
+
+.button-nav-box{
+  position:             relative;
+  display:              block;
+  background-color:   var(---righ-background-color);
+  color:              #010302;
+  text-decoration:      none;
+  border-style:         solid;
+  border-radius:        20px;
+  border-color:         var(--secondary-color);
+  width:                138px;
+  text-align:           center;
+  height:               30px;
+  left:                 700px;
+}
+
+.btn-nav-pos-1{
+  position: relative;
+  left:     347px;
+  top:      4px;
+  text-decoration: none;
+}
+
+.btn-nav-pos-2{
+  position:   relative;
+  left:       520px;
+  bottom:     31px;
+  text-decoration: none;
+}
+
+.btn-nav-pos-3{
+  position: relative;
+  left:     690px;
+  bottom:   67px;
+  text-decoration: none;
+}
+
+
+
+.button-navbar1{
+  height:               auto;
+  left:                 700px;
+}
+
+.button-navbar2{
+  height:             auto;
+  left:               850px;
+}
+
+.button-navbar3{
+  height:                 auto;
+  left:                   950px;
+}
+
+/* Configurations for Carousell*/
+
+.toolbox-dsign-box{
+  position: relative;
+  width:    1523px;
+  height:   520px;
+  top:      100px;
+  left:     4px;
+}
+
+.instructions-box{
+  position: relative;
+  width:    1523px;
+  height:   150px;
+  top:      0px;
+}
+
+.dsign-box{
+  position: absolute;
+  width:    1523px;
+  height:   350px;
+  background-color: #b8b6b6;
+  top:      162px;
+}
+
+.publicidad-box{
+  position:           relative;
+  width:              1523px;
+  height:             275px;
+  top:                386px;
+  background-color: #3a7ecdf2;
+}
+
+
+.publicidad-item{
+  position:   relative;
+  width:      484px;
+  height:     256px;
+  transform: scale(0.30);
+}
+
+.publicidad1-box{
+  right: 33px;
+  bottom: 71px;
+  background-color: #a9bcc0;
+}
+
+.publicidad2-box{
+  bottom: 334px;
+  left: 472px;
+  background-color: #441c8f;
+}
+
+.publicidad3-box{
+  bottom: 574px;
+  left: 1019px;
+  background-color: #1da516;
+}
+

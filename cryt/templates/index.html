@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
 
     <!-- Icons-->
-    <link rel="icon" href="{% static 'cryt/img/lock.jpg' %}" sizes="16x16" type="image/png">
+    <link rel="icon" href="{% static 'cryt/img/teleton-logo-30x30.png' %}" sizes="16x16" type="image/png">
     <meta name="theme-color" content="#7952b3">
     
     <!-- Title -->
-    <title>GIO - dsigner</title>
+    <title>Cryptocryt - home</title>
 </head>
 
 <body>
@@ -57,39 +57,57 @@
     </section>
     
     <!-- Section: Navigabition bar & Image carousell -->
-    <section class="all-right">
+    <section class="all-right-box">
       <nav class="nav-bar">
         <!-- Navigation bar -->
         <div class="nav-bar-section">
+          <div class="menu-nav">
+          </div>
           <!-- Logo in navbar-->
-          <a class="logo-navbar" href="{% url 'index' %}">CryptoCryt</a>
+          <div class="logo-teleton-box">
+            <a class="logo-teleton-link" href="{% url 'index' %}">
+              <img class="logo-teleton-img" alt="Teleton logo" src="{% static 'cryt/img/cryptocryt-logo-173x51.png' %}">
+            </a>
+          </div>
         </div>
-        <div class="nav-bar-section">
-          <!-- placeholder for a button-->
-          <a class="button-navbar1" href="{% url 'verify' %}"> Verify</a>
-        </div>
-        <div class="nav-bar-section">
-          <!-- placeholder for a button-->
-          <a class="button-navbar2" href="#"> Test</a>
-        </div>
-        <div class="nav-bar-section">
-          <!-- placeholder for a button-->
-          <a class="button-navbar3" href="{% url 'account_logout' %}"> Log Out</a>
+        <div class="nav-bar-buttons-box">
+          <div class="button-nav-box btn-nav-pos-1">
+            <!-- placeholder for a button-->
+            <a class="button-nav-box1" href="{% url 'verify' %}"> Verify</a>
+          </div>
+          <div class="button-nav-box btn-nav-pos-2">
+            <!-- placeholder for a button-->
+            <a class="button-navbar2" href="#"> Test</a>
+          </div>
+          <div class="button-nav-box btn-nav-pos-3">
+            <!-- placeholder for a button-->
+            <a class="button-navbar3" href="{% url 'account_logout' %}"> Log Out</a>
+          </div>
         </div>
       </nav>
   
       <!-- Image carousell-->
-      <section class="image-carousell">
-        <div class="image-carousell-top">
-          <!-- Color space: decoration-->
-          <h2 class="top-carousell"> A faster way to sign digital documents</h2>
+      <section class="toolbox-dsign-box">
+        <div class="instructions-box">
+          <img class="instructions-img" alt="Use instructions" src="{% static 'cryt/img/instructions-1523x150.png' %}">
         </div>
-        <div class="carousell">
-          <!-- Here is the part for the carousell-->
-          <img class="img-carousell" alt="Teleton template" src="{% static 'cryt/img/teleton.jpg' %}">
+        <div class="dsign-box">
+            <form  class="signer-box" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
         </div>
-        <div class="image-carousell-bottom">
-          <!-- Color space: decoration-->
+        <div class="publicidad-box">
+          <div class="publicidad1-box publicidad-item">
+            <img class="aviso1-img" alt="aviso 1" src="{% static 'cryt/img/aviso1.png' %}">
+          </div>
+          <div class="publicidad2-box publicidad-item">
+            <img class="aviso2-img" alt="aviso 2" src="{% static 'cryt/img/aviso2.png' %}">
+          </div>
+          <div class="publicidad3-box publicidad-item">
+            <img class="aviso3-img" alt="aviso 3" src="{% static 'cryt/img/aviso3.png' %}">
+          </div>
         </div>
       </section>
     </section>

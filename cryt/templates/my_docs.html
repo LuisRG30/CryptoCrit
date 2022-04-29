@@ -1,28 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 {% load static %}
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
-    <title>Digital Signatures</title>
+    <meta name="description" content="Web-base multi digital signature tool">
+    <meta name="author" content="TEC_IDM2022">
+
+    <!-- CSS style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/my_docs.css' %}">
+
+    <!-- Icons-->
+    <link rel="icon" href="{% static 'cryt/img/teleton-logo-30x30.png' %}" sizes="16x16" type="image/png">
+    <meta name="theme-color" content="#7952b3">
+    
+    <!-- Title -->
+    <title>Cryptocryt - mydocs</title>
 </head>
+
 <body>
-    <h2>My Documents</h2>
-        <table>
-          <tr>
-            <th colspan="2">Document</th>
-            <th colspan="2">Owner</th>
-            <th colspan="2">Signature Date</th>
-          </tr>
-          {% for doc in docs %}
-          <tr>
-            <td colspan="2"><a href="{{ doc.document.url }}">{{ doc.document }}</a></td>
-            <td colspan="2">{{ doc.owner }}</td>
-            <td colspan="2">{{ doc.signed }}</td>
-          </tr>
-          {% endfor %}
-        </table>
-</body>
+    <!-- Section: Login left-side bar -->
+    <section class="login-bar">
+      <div class="profile">
+        <!-- Profile picture -->
+        <div class="profile-picture">
+          <!--User profile picture-->
+          <img class="img-profile img.rounded-circle" alt="Image user profile" src="{% static 'cryt/img/smileygirl.png' %}">
+        </div>
+        <div class="welcome-msg-box">
+          <h3 class="welcome-msg">Welcome</h3>
+        </div>
+        <div class="profile-name-box">
+          <a class="nav-link-profile" href="#">{{ user }}</a>
+        </div>
+      </div>
+      <div class="menu-box">
+        <!-- Inboxes for sign in-->
+        <div class="menu-title-box">
+          <h4 class="menu-title"> Menu </h4>
+        </div>
+        <div class="menu-options-box">
+          <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos1" href="{% url 'mydocs' %}">My documents</a>
+        </div>
+        <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos2" href="{% url 'shared' %}">My shares</a>
+        </div>
+        <div class="button-menu botton-menu-style">
+            <a class="menu-botton button-pos3" href="{% url 'history' %}">My Activity</a>
+        </div>
+        </div>     
+      </div>
+      
+    </section>
+    
+    <!-- Section: Navigabition bar & Image carousell -->
+    <section class="all-right-box">
+      <nav class="nav-bar">
+        <!-- Navigation bar -->
+        <div class="nav-bar-section">
+          <div class="menu-nav">
+            <div class="backward-arrow-box">
+              <a class="backward-arrow-link" href="{% url 'index' %}">
+                <img class="backward-arrow-img" alt="Backward arrow" src="{% static 'cryt/img/barrow-40x40.png' %}">
+              </a>
+            </div>
+          </div>
+          <!-- Logo in navbar-->
+          <div class="logo-teleton-box">
+            <a class="logo-teleton-link" href="{% url 'index' %}">
+              <img class="logo-teleton-img" alt="Teleton logo" src="{% static 'cryt/img/cryptocryt-logo-173x51.png' %}">
+            </a>
+          </div>
+        </div>
+        <div class="nav-bar-buttons-box">
+          <div class="button-nav-box btn-nav-pos-1">
+            <!-- placeholder for a button-->
+            <a class="button-nav-box1" href="{% url 'verify' %}"> Verify</a>
+          </div>
+          <div class="button-nav-box btn-nav-pos-2">
+            <!-- placeholder for a button-->
+            <a class="button-navbar2" href="#"> Test</a>
+          </div>
+          <div class="button-nav-box btn-nav-pos-3">
+            <!-- placeholder for a button-->
+            <a class="button-navbar3" href="{% url 'account_logout' %}"> Log Out</a>
+          </div>
+        </div>
+      </nav>
+  
+      <!-- My docs carousell-->
+      <section class="toolbox-dsign-box">
+        <div class="my_docs-box">
+          <table>
+            <tr class="param-my_docs">
+              <th colspan="2" style="position: relative; left: 120px;" >Document</th>
+              <th colspan="2" style="position: relative; left: 700px;" >Owner</th>
+              <th colspan="2" style="position: relative; left: 920px;" >Signature Date</th>
+            </tr>
+            {% for doc in docs %}
+            <tr>
+              <td colspan="2" style="position: relative; left: 120px; top: 30px;"><a href="#">{{ doc.document }}</td>
+              <td colspan="2" style="position: relative; left: 700px; top: 30px;">{{ doc.owner }}</td>
+              <td colspan="2" style="position: relative; left: 920px; top: 30px;">{{ doc.signed }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </section>
+    </section>
+  </body>
 </html>
