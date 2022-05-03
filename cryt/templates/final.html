@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+{% load static %}
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web-base multi digital signature tool">
+    <meta name="author" content="TEC_IDM2022">
+
+    <!-- CSS style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'cryt/index.css' %}">
+
+    <!-- Icons-->
+    <link rel="icon" href="resources/icon/web-imagotipo_16x16.png" sizes="16x16" type="image/png">
+    <meta name="theme-color" content="#7952b3">
+    
+    <!-- Title -->
+    <title>Digital Signatures</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="navbar-welcome">
+            <div class="logo">
+                <div class="webname">
+                    <h2 class="webname-h2" >GIO</h2>
+                </div>
+                <div class="logo-text">
+                    <h4 style="color: var(--highlight);">The fastest digital signer</h4>
+                </div>
+            </div>
+        </div>
+        <h4>{{ message }}</h4>
+        <div class="botn-verify  botn-menu botn-style">
+            <a class="menu-botton" href="{% url 'index' %}">Home</a>
+        </div> 
+</body>
+</html>

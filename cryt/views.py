@@ -65,9 +65,9 @@ def index(request):
 
                 Event.objects.create(owner=request.user, operation=f"Sign document {file.name}", timestamp=datetime.now())
                  
-                return HttpResponse("Signature succesful")
+                return render(request, 'final.html', {'message': 'Signature successful.'})
             else:
-                return HttpResponse('Incorrect password')
+                return render(request, 'final.html', {'message': 'Incorrect password.'})
         else:
             return HttpResponse('Invlid form')
     else:
@@ -99,7 +99,7 @@ def verify(request):
                 doc = Document.objects.get(hash=hash_value)
                 user = doc.owner
             except:
-                return HttpResponse('Could not read file metadata. File is possibly corrupt.')
+                return render(request, 'final.html', {'message': 'File possibly corrupt. Unable to verify.'})
             
             #Verify signature for given user
             try:
@@ -107,9 +107,9 @@ def verify(request):
                 
                 res = gio.verificala(file, doc.signature, profile.public_key)
                 if res:
-                    return HttpResponse(f"Signed by user {user}")
+                    return render(request, 'final.html', {'message': f"Signed by user {user}."})
             except:
-                return HttpResponse('Signature could not be verified.')
+                return render(request, 'final.html', {'message': 'Signature could not be verified.'})
 
         else:
             return HttpResponse('Invalid form')
