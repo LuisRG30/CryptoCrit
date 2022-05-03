@@ -69,7 +69,7 @@ def index(request):
             else:
                 return HttpResponse('Incorrect password')
         else:
-            return HttpResponse('Invlid form')
+            return HttpResponse('Invalid form')
     else:
         form = SignDocForm()
         return render(request, 'index.html', {'form': form, 'user': request.user})
